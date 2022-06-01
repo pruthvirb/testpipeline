@@ -1,4 +1,4 @@
-gitProvider: Pipelinescantest
+gitProvider: pipeline_replicate
 artifactory: artifactory_int
 artifactoryUrl: muddanajv.jfrog.io   # replace with your server name
 repoPath: pruthvirb/testpipeline     # replace jfrog with your username or org name
