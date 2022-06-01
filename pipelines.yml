@@ -34,6 +34,12 @@ pipelines:
             - name: mvn_build_step
           outputResources:
             - name: mvn_build_info
+          integrations:
+            - name: mail       # replace with friendly name of your SMTP Credentials integration
+        execution:
+          onSuccess:
+            # replace 'notifySMTP' with the name of your SMTP Credentials integration
+            - send_notification mail --recipients "pruthvi94rb@gmail.com" --subject "Build Succeeded" --body "build details:$PIPELINE_NAME.$RUN_NUMBER"
             
       - name: xrayScanStep
         type: XrayScan
