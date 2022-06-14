@@ -1,6 +1,6 @@
-gitProvider: git
+gitProvider: pipeline_replicate
 artifactory: artifactory_int
-artifactoryUrl: http://34.106.151.185   # replace with your server name
+artifactoryUrl: https://muddanajv.jfrog.io/   # replace with your server name
 repoPath: pruthvirb/testpipeline     # replace jfrog with your username or org name
 deployerRepo: maven-local
 smtpIntegration: mail
