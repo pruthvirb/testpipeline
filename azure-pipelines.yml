@@ -19,7 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean deploy'
+    goals: 'clean deploy -DartifactoryDeploy -Dartifactory.url=https://clouddsein.jfrog.io/artifactory -Dartifactory.username=pruthvi -Dartifactory.password=Password@123'
 
 
 - task: Bash@3
@@ -27,8 +27,3 @@ steps:
     targetType: 'inline'
     script: 'env | sort'
     
-- task: JFrogPublishBuildInfo@1
-  inputs:
-    artifactoryConnection: 'mk-jfrog-artifactory-hts'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
