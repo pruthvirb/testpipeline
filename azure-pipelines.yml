@@ -19,7 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean deploy -DartifactoryDeploy -DaltDeploymentRepository=maven-test-local::default::https://pruthvi:AP3FJY5LhLbVgxDVikMh7P2Crg5@clouddsein.jfrog.io/artifactory/maven-test-local/'
+    goals: 'clean deploy -DartifactoryDeploy -DaltDeploymentRepository=azure-libs-snapshot::default::https://pruthvi:AP3FJY5LhLbVgxDVikMh7P2Crg5@clouddsein.jfrog.io/artifactory/azure-libs-snapshot/'
 
 - task: Bash@3
   inputs:
