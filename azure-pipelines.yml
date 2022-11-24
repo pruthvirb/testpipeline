@@ -19,7 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean deploy -DartifactoryDeploy -DaltDeploymentRepository=azure-libs-snapshot::default::https://pruthvi:AP3FJY5LhLbVgxDVikMh7P2Crg5@clouddsein.jfrog.io/artifactory/azure-libs-snapshot/'
+    goals: 'clean deploy -DartifactoryDeploy -DaltDeploymentRepository=azure-libs-snapshot::default::https://pruthvi:AP3FJY5LhLbVgxDVikMh7P2Crg5@clouddsein.jfrog.io/artifactory/azure-libs-snapshot/ -Dartifactory.username=pruthvi -Dartifactory.password=Password@123'
 
 - task: Bash@3
   inputs:
