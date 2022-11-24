@@ -25,3 +25,9 @@ steps:
     targetType: 'inline'
     script: 'env | sort'
     
+- task: 
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'mk-jfrog-artifactory-hts'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
