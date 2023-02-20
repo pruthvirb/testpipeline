@@ -10,26 +10,26 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+- task: JFrogMaven@1
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean deploy -DartifactoryDeploy -DaltDeploymentRepository=azure-libs-snapshot::default::https://clouduser:AP7q6v2JNhXpdPk3rpSJyfegv39@hts2.jfrog.io/artifactory/azure-libs-snapshot/ -Dartifactory.username=clouduser -Dartifactory.password=Password@123'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'env | sort'
-    
-- task: JFrogPublishBuildInfo@1
-  inputs:
-    artifactoryConnection: 'mk-jfrog-artifactory-hts'
+    goals: 'install'
+    artifactoryResolverService: 'clouddse-arti'
+    targetResolveReleaseRepo: 'azure-libs-release'
+    targetResolveSnapshotRepo: 'azure-libs-snapshot'
+    artifactoryDeployService: 'clouddse-arti'
+    targetDeployReleaseRepo: 'azure-libs-release-local'
+    targetDeploySnapshotRepo: 'azure-libs-snapshot-local'
+    collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'clouddse-arti'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+
 - task: JFrogBuildScan@1
   inputs:
     xrayConnection: 'clouddse-xray'
